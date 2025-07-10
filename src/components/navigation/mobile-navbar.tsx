@@ -1,9 +1,13 @@
-import { Link } from '@tanstack/react-router';
 import { MenuIcon } from 'lucide-react';
 import { Button } from '../ui/button';
-import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet';
+import { useDispatch } from 'react-redux';
+import { logout } from '@/store/auth/auth.slice';
+import { useNavigate } from '@tanstack/react-router';
 
 export function MobileNavbar() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -13,27 +17,19 @@ export function MobileNavbar() {
       </SheetTrigger>
       <SheetContent className="px-6 py-4">
         <SheetHeader>
-          <SheetTitle className="text-center text-2xl font-bold">Wellness Log</SheetTitle>
+          <SheetTitle className="text-center text-2xl font-bold">Wellness</SheetTitle>
         </SheetHeader>
         <div className="flex h-full flex-col">
-          <nav>
-            <ul className="flex flex-col space-y-4">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/sign-up">Sign Up</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-            </ul>
-          </nav>
-          <SheetFooter>
-            <Button variant="outline" className="w-full">
-              Logout
-            </Button>
-          </SheetFooter>
+          <Button
+            variant="outline"
+            className="text-destructive focus:text-destructive cursor-pointer"
+            onClick={() => {
+              dispatch(logout());
+              navigate({ to: '/login' });
+            }}
+          >
+            Logout
+          </Button>
         </div>
       </SheetContent>
     </Sheet>
