@@ -1,5 +1,5 @@
 import { fetchHandler } from '../../handlers/fetch-handler';
-import type { SignUpResponse } from './types';
+import type { LoginResponse, SignUpResponse } from './types';
 
 const BASE_URL = import.meta.env.VITE_BASE_API_URL;
 
@@ -11,6 +11,14 @@ export const authApi = {
         email,
         password,
         confirmPassword,
+      }),
+    }),
+  login: (email: string, password: string) =>
+    fetchHandler<LoginResponse>(`${BASE_URL}/login?scenario=success`, {
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+        password,
       }),
     }),
 };
