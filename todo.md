@@ -1,0 +1,2 @@
+- [ ] - Clean Initial Boilerplate
+- [ ] - Integrate tailwind
