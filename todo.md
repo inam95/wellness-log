@@ -6,4 +6,4 @@
 - [x] - Sign up Page
 - [x] - Sign up form submission
 - [x] - Make toast work
-- [ ] - Setup Redux
+- [x] - Setup Redux
