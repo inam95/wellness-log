@@ -1,11 +1,11 @@
 import type { SignUpResponse, User } from '@/lib/api/auth/types';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-interface AuthState {
+type AuthState = {
   user: User | null;
   isAuthenticated: boolean;
   token: string | null;
-}
+};
 
 const initialState: AuthState = {
   token: null,

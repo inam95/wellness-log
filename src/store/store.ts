@@ -2,22 +2,24 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import authReducer from './auth/auth.slice';
 import storage from 'redux-persist/lib/storage';
+import userReducer from './auth/user.slice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth'],
+  whitelist: ['auth', 'user'],
   debug: true,
 };
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  user: userReducer,
 });
 
-const persistedAuthReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedAuthReducer,
+  reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -27,10 +29,6 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-persistor.subscribe(() => {
-  console.log('Persistor state:', persistor.getState());
-});
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

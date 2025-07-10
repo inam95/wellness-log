@@ -4,9 +4,9 @@ import { Badge } from '@/components/ui/badge';
 import type { Log } from '@/lib/api/wellness-logs/types';
 import { MOOD_CONFIG } from '@/lib/utils';
 
-interface WellnessLogCardProps {
+type WellnessLogCardProps = {
   log: Log;
-}
+};
 
 export const WellnessLogCard = ({ log }: WellnessLogCardProps) => {
   const moodConfig = MOOD_CONFIG[log.mood];

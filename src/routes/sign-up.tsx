@@ -41,9 +41,9 @@ function RouteComponent() {
     },
     onSubmit: async ({ value }) => {
       const response = await authApi.signup(value.email, value.password, value.confirmPassword);
-      dispatch(authSuccess(response.data!));
-      await navigate({ to: redirect });
       if (response.success) {
+        dispatch(authSuccess(response.data!));
+        await navigate({ to: redirect });
         return null;
       } else {
         toast.error('Signup failed', {
@@ -89,7 +89,7 @@ function RouteComponent() {
             children={field => (
               <div className="grid gap-2">
                 <Label htmlFor={field.name} className="text-foreground">
-                  Username
+                  Email
                 </Label>
                 <Input
                   id={field.name}

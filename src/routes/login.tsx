@@ -39,12 +39,9 @@ function RouteComponent() {
     },
     onSubmit: async ({ value }) => {
       const response = await authApi.login(value.email, value.password);
-      dispatch(authSuccess(response.data!));
-
-      await new Promise(resolve => setTimeout(resolve, 100));
-
-      await navigate({ to: redirect });
       if (response.success) {
+        dispatch(authSuccess(response.data!));
+        await navigate({ to: redirect });
         return null;
       } else {
         toast.error('Login failed', {

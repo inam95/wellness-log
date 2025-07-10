@@ -1,24 +1,23 @@
-import { useState, useEffect } from 'react';
-import { Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { setTheme } from '@/store/auth/user.slice';
+import type { RootState } from '@/store/store';
+import { Moon, Sun } from 'lucide-react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const ThemeToggle = () => {
-  const [isDark, setIsDark] = useState(false);
+  const dispatch = useDispatch();
+  const { theme } = useSelector((state: RootState) => state.user);
+
+  console.log(theme);
 
   useEffect(() => {
-    // Check for stored theme preference or default to light
-    const stored = localStorage.getItem('wellness_theme');
-    const prefersDark = stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-    setIsDark(prefersDark);
-    document.documentElement.classList.toggle('dark', prefersDark);
-  }, []);
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+  }, [theme]);
 
   const toggleTheme = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-    document.documentElement.classList.toggle('dark', newTheme);
-    localStorage.setItem('wellness_theme', newTheme ? 'dark' : 'light');
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    dispatch(setTheme(theme === 'dark' ? 'light' : 'dark'));
   };
 
   return (
@@ -29,8 +28,10 @@ export const ThemeToggle = () => {
       className="text-foreground relative"
       aria-label="Toggle theme"
     >
-      <Sun className={`h-4 w-4 transition-all ${isDark ? 'scale-0 rotate-90' : 'scale-100 rotate-0'}`} />
-      <Moon className={`absolute h-4 w-4 transition-all ${isDark ? 'scale-100 rotate-0' : 'scale-0 -rotate-90'}`} />
+      <Sun className={`h-4 w-4 transition-all ${theme === 'dark' ? 'scale-0 rotate-90' : 'scale-100 rotate-0'}`} />
+      <Moon
+        className={`absolute h-4 w-4 transition-all ${theme === 'dark' ? 'scale-100 rotate-0' : 'scale-0 -rotate-90'}`}
+      />
     </Button>
   );
 };
