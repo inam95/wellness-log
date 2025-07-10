@@ -6,7 +6,7 @@ import { logsApi } from '@/lib/api/wellness-logs/logs.api';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { Filter, Loader2, Plus, Search } from 'lucide-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -19,8 +19,10 @@ function RouteComponent() {
     queryFn: () => logsApi.getLogs(),
   });
 
-  const filteredLogs =
-    logs?.data?.filter(log => log.activityNotes.toLowerCase().includes(searchQuery.toLowerCase())) ?? [];
+  const filteredLogs = useMemo(
+    () => logs?.data?.filter(log => log.activityNotes.toLowerCase().includes(searchQuery.toLowerCase())) ?? [],
+    [logs, searchQuery],
+  );
 
   return (
     <>
