@@ -33,4 +33,6 @@
 4. Run `npm install`
 5. Run `npm run dev`
 
+---
+
 Note: Answers for section 3 are in the `section-3` folder (in the root). There are 2 files for each set.
