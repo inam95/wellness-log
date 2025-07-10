@@ -62,7 +62,7 @@ function RouteComponent() {
                   description={`No wellness logs match "${searchQuery}". Try adjusting your search.`}
                   icon={Search}
                   action={
-                    <Button onClick={() => setSearchQuery('')} variant="outline">
+                    <Button onClick={() => setSearchQuery('')} variant="outline" className="text-foreground">
                       Clear Search
                     </Button>
                   }
@@ -74,7 +74,10 @@ function RouteComponent() {
                   icon={Plus}
                   action={
                     <Link to="/create-log">
-                      <Button variant="wellness">Create Your First Log</Button>
+                      <Button variant="wellness" className="text-foreground">
+                        <Plus className="h-4 w-4" />
+                        Create Your First Log
+                      </Button>
                     </Link>
                   }
                 />
