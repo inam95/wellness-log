@@ -1,0 +1,408 @@
+{
+  "info": {
+    "_postman_id": "b1ea8ef5-b1af-4f14-aa55-da1801f48ad2",
+    "name": "Wellness Log API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "4092086"
+  },
+  "item": [
+    {
+      "name": "logs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/logs",
+          "host": ["{{baseUrl}}"],
+          "path": ["logs"]
+        }
+      },
+      "response": [
+        {
+          "name": "logs-success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/logs",
+              "host": ["{{baseUrl}}"],
+              "path": ["logs"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            }
+          ],
+          "cookie": [
+            {
+              "expires": "Invalid Date"
+            }
+          ],
+          "body": "{\r\n  \"success\": true,\r\n  \"data\": [\r\n    {\r\n      \"id\": \"1\",\r\n      \"mood\": \"happy\",\r\n      \"sleepDuration\": 8,\r\n      \"activityNotes\": \"Had a great workout session\",\r\n      \"createdAt\": \"2025-01-09T10:30:00Z\",\r\n      \"userId\": \"1\"\r\n    },\r\n    {\r\n      \"id\": \"2\",\r\n      \"mood\": \"stressed\",\r\n      \"sleepDuration\": 6,\r\n      \"activityNotes\": \"Long day at work, need to relax\",\r\n      \"createdAt\": \"2025-01-08T15:45:00Z\",\r\n      \"userId\": \"1\"\r\n    },\r\n    {\r\n      \"id\": \"3\",\r\n      \"mood\": \"focused\",\r\n      \"sleepDuration\": 7,\r\n      \"activityNotes\": \"Productive coding session\",\r\n      \"createdAt\": \"2025-01-07T09:15:00Z\",\r\n      \"userId\": \"1\"\r\n    },\r\n    {\r\n      \"id\": \"4\",\r\n      \"mood\": \"tired\",\r\n      \"sleepDuration\": 7,\r\n      \"activityNotes\": \"Indoor cricket match\",\r\n      \"createdAt\": \"2025-01-10T09:15:00Z\",\r\n      \"userId\": \"1\"\r\n    }\r\n  ]\r\n}"
+        }
+      ]
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"user@example@com\",\r\n    \"password\": \"password123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/login?scenario=success",
+          "host": ["{{baseUrl}}"],
+          "path": ["login"],
+          "query": [
+            {
+              "key": "scenario",
+              "value": "success"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "login-success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"user@example@com\",\r\n    \"password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/login?scenario=success",
+              "host": ["{{baseUrl}}"],
+              "path": ["login"],
+              "query": [
+                {
+                  "key": "scenario",
+                  "value": "success"
+                }
+              ]
+            }
+          },
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            }
+          ],
+          "cookie": [
+            {
+              "expires": "Invalid Date"
+            }
+          ],
+          "body": "{\r\n  \"success\": true,\r\n  \"data\": {\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mockpayload.mocksignature\",\r\n    \"user\": {\r\n        \"id\": \"1\",\r\n        \"email\": \"user@example.com\",\r\n        \"name\": \"John Doe\"\r\n    }\r\n  }\r\n}"
+        },
+        {
+          "name": "login-error",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"user@example@com\",\r\n    \"password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/login?scenario=error",
+              "host": ["{{baseUrl}}"],
+              "path": ["login"],
+              "query": [
+                {
+                  "key": "scenario",
+                  "value": "error"
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            }
+          ],
+          "cookie": [
+            {
+              "expires": "Invalid Date"
+            }
+          ],
+          "body": "{\r\n  \"success\": false,\r\n  \"error\": \"Invalid credentials\"\r\n}"
+        }
+      ]
+    },
+    {
+      "name": "logs",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"mood\": \"Happy\",\r\n    \"sleepDuration\": 8,\r\n    \"activityNotes\": \"Great morning run\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/wellness-logs?scenario=success",
+          "host": ["{{baseUrl}}"],
+          "path": ["wellness-logs"],
+          "query": [
+            {
+              "key": "scenario",
+              "value": "success"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "logs-success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"mood\": \"Happy\",\r\n    \"sleepDuration\": 8,\r\n    \"activityNotes\": \"Great morning run\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/logs?scenario=success",
+              "host": ["{{baseUrl}}"],
+              "path": ["logs"],
+              "query": [
+                {
+                  "key": "scenario",
+                  "value": "success"
+                }
+              ]
+            }
+          },
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            }
+          ],
+          "cookie": [],
+          "body": "{\r\n  \"success\": true,\r\n  \"data\": {\r\n    \"id\": \"4\",\r\n    \"mood\": \"Happy\",\r\n    \"sleepDuration\": 8,\r\n    \"activityNotes\": \"Great morning run\",\r\n    \"date\": \"2025-07-10T06:30:00Z\",\r\n    \"userId\": \"1\"\r\n  }\r\n}"
+        },
+        {
+          "name": "logs-error",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"mood\": \"Happy\",\r\n    \"sleepDuration\": 8,\r\n    \"activityNotes\": \"Great morning run\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/logs?scenario=error",
+              "host": ["{{baseUrl}}"],
+              "path": ["logs"],
+              "query": [
+                {
+                  "key": "scenario",
+                  "value": "error"
+                }
+              ]
+            }
+          },
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            }
+          ],
+          "cookie": [],
+          "body": "{\r\n  \"success\": false,\r\n  \"error\": \"Activity notes must be less than 200 characters\"\r\n}"
+        }
+      ]
+    },
+    {
+      "name": "sign-up",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"user@example@com\",\r\n    \"password\": \"password123\",\r\n    \"confirmPassword\": \"password123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sign-up?scenario=success",
+          "host": ["{{baseUrl}}"],
+          "path": ["sign-up"],
+          "query": [
+            {
+              "key": "scenario",
+              "value": "success"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "sign-up-success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"user@example@com\",\r\n    \"password\": \"password123\",\r\n    \"confirmPassword\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/sign-up?scenario=success",
+              "host": ["{{baseUrl}}"],
+              "path": ["sign-up"],
+              "query": [
+                {
+                  "key": "scenario",
+                  "value": "success"
+                }
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "x-mock-match-request-body",
+              "value": "true",
+              "description": "",
+              "type": "text"
+            }
+          ],
+          "cookie": [
+            {
+              "expires": "Invalid Date"
+            }
+          ],
+          "body": "{\r\n  \"success\": true,\r\n  \"data\": {\r\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mockpayload.mocksignature\",\r\n    \"user\": {\r\n        \"id\": \"2\",\r\n        \"email\": \"newuser@example.com\",\r\n        \"name\": \"New User\"\r\n    }\r\n  }\r\n}"
+        },
+        {
+          "name": "sign-up-error",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"\",\r\n    \"password\": \"\",\r\n    \"confirmPassword\": \"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/sign-up?scenario=error",
+              "host": ["{{baseUrl}}"],
+              "path": ["sign-up"],
+              "query": [
+                {
+                  "key": "scenario",
+                  "value": "error"
+                }
+              ]
+            }
+          },
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            }
+          ],
+          "cookie": [
+            {
+              "expires": "Invalid Date"
+            }
+          ],
+          "body": "{\n    \"success\": false,\n    \"error\": \"Email already exists\"\n}"
+        }
+      ]
+    }
+  ]
+}
