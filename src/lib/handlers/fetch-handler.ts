@@ -46,10 +46,9 @@ export async function fetchHandler<T>(url: string, options: FetchOptions = {}): 
       throw new RequestError(response.status, `HTTP Error: ${response.statusText}`);
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as ApiResponse<T>;
     return {
-      data,
-      success: true,
+      ...data,
     };
   } catch (err) {
     const error = isError(err) ? err : new Error('Unknown error');

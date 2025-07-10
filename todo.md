@@ -7,3 +7,4 @@
 - [x] - Sign up form submission
 - [x] - Make toast work
 - [x] - Setup Redux
+- [x] - Use Redux for auth state management

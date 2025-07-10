@@ -10,6 +10,8 @@ import { FieldInfo } from '@/components/field-info';
 import { Button } from '@/components/ui/button';
 import { authApi } from '@/lib/api/auth/auth.api';
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { loginSuccess } from '@/store/auth/auth.slice';
 
 const signUpSearchSchema = z.object({
   redirect: fallback(z.string(), '/').default('/'),
@@ -23,6 +25,7 @@ export const Route = createFileRoute('/sign-up')({
 function RouteComponent() {
   const { redirect } = Route.useSearch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const form = useForm({
     defaultValues: {
@@ -35,8 +38,9 @@ function RouteComponent() {
     },
     onSubmit: async ({ value }) => {
       const response = await authApi.signup(value.email, value.password, value.confirmPassword);
+      await navigate({ to: redirect });
+      dispatch(loginSuccess(response.data!));
       if (response.success) {
-        await navigate({ to: redirect });
         return null;
       } else {
         toast.error('Signup failed', {
