@@ -2,7 +2,7 @@ import { EmptyState } from '@/components/empty-state';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { WellnessLogCard } from '@/components/wellness-log-card';
-import { logsApi } from '@/lib/api/logs/logs.api';
+import { logsApi } from '@/lib/api/wellness-logs/logs.api';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { Filter, Loader2, Plus, Search } from 'lucide-react';

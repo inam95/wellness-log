@@ -1,7 +1,7 @@
 import { Clock, Calendar } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import type { Log } from '@/lib/api/logs/types';
+import type { Log } from '@/lib/api/wellness-logs/types';
 import { MOOD_CONFIG } from '@/lib/utils';
 
 interface WellnessLogCardProps {
