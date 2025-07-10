@@ -1,2 +1,5 @@
-- [ ] - Clean Initial Boilerplate
-- [ ] - Integrate tailwind
+- [x] - Clean Initial Boilerplate
+- [x] - Integrate tailwind
+- [ ] - Init ShadCN UI
+- [ ] - Init Tanstack Query
+- [ ] - Init Tanstack Router
