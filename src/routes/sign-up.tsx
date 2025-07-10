@@ -38,8 +38,11 @@ function RouteComponent() {
     },
     onSubmit: async ({ value }) => {
       const response = await authApi.signup(value.email, value.password, value.confirmPassword);
-      await navigate({ to: redirect });
       dispatch(loginSuccess(response.data!));
+
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      await navigate({ to: redirect });
       if (response.success) {
         return null;
       } else {

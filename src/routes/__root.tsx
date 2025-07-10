@@ -2,8 +2,8 @@ import { Header } from '@/components/navigation/header';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Outlet, createRootRoute } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
-import { Toaster } from 'react-hot-toast';
 import * as React from 'react';
+import { Toaster } from 'react-hot-toast';
 
 export const Route = createRootRoute({
   component: RootComponent,

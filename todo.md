@@ -8,3 +8,4 @@
 - [x] - Make toast work
 - [x] - Setup Redux
 - [x] - Use Redux for auth state management
+- [x] -
