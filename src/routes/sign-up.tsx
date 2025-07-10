@@ -9,9 +9,7 @@ import { Input } from '@/components/ui/input';
 import { FieldInfo } from '@/components/field-info';
 import { Button } from '@/components/ui/button';
 import { authApi } from '@/lib/api/auth/auth.api';
-import { toast } from 'sonner';
-
-const BASE_URL = import.meta.env.VITE_BASE_API_URL;
+import toast from 'react-hot-toast';
 
 const signUpSearchSchema = z.object({
   redirect: fallback(z.string(), '/').default('/'),
@@ -25,8 +23,6 @@ export const Route = createFileRoute('/sign-up')({
 function RouteComponent() {
   const { redirect } = Route.useSearch();
   const navigate = useNavigate();
-
-  console.log(BASE_URL);
 
   const form = useForm({
     defaultValues: {
@@ -44,7 +40,7 @@ function RouteComponent() {
         return null;
       } else {
         toast.error('Signup failed', {
-          description: response.error,
+          position: 'bottom-right',
         });
       }
     },

@@ -1,5 +1,9 @@
 - [x] - Clean Initial Boilerplate
 - [x] - Integrate tailwind
-- [ ] - Init ShadCN UI
-- [ ] - Init Tanstack Query
-- [ ] - Init Tanstack Router
+- [x] - Init ShadCN UI
+- [x] - Init Tanstack Query
+- [x] - Init Tanstack Router
+- [x] - Sign up Page
+- [x] - Sign up form submission
+- [x] - Make toast work
+- [ ] - Setup Redux
