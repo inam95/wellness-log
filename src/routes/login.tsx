@@ -7,12 +7,14 @@ import { authApi } from '@/lib/api/auth/auth.api';
 import { loginSchema } from '@/lib/schemas/auth.schema';
 import { authSuccess } from '@/store/auth/auth.slice';
 import { useForm } from '@tanstack/react-form';
-import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import { createFileRoute, Link, redirect, useNavigate } from '@tanstack/react-router';
 import { fallback, zodValidator } from '@tanstack/zod-adapter';
 import { Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { z } from 'zod';
+
+const fallbackRoute = '/' as const;
 
 const loginSearchSchema = z.object({
   redirect: fallback(z.string(), '/').default('/'),
@@ -21,10 +23,17 @@ const loginSearchSchema = z.object({
 export const Route = createFileRoute('/login')({
   component: RouteComponent,
   validateSearch: zodValidator(loginSearchSchema),
+  beforeLoad: ({ context, search }) => {
+    if (context.auth.isAuthenticated) {
+      throw redirect({ to: search.redirect || fallbackRoute });
+    }
+  },
 });
 
 function RouteComponent() {
   const { redirect } = Route.useSearch();
+
+  console.log('yex', redirect);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

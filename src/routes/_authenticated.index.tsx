@@ -8,7 +8,7 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import { Filter, Loader2, Plus, Search } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/_authenticated/')({
   component: RouteComponent,
 });
 

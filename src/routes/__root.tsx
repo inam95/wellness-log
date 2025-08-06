@@ -1,13 +1,25 @@
 import { Header } from '@/components/navigation/header';
+import type { User } from '@/lib/api/auth/types';
 import type { RootState } from '@/store/store';
+import type { QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { Outlet, createRootRoute } from '@tanstack/react-router';
+import { Outlet, createRootRouteWithContext } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import * as React from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 
-export const Route = createRootRoute({
+// Define the router context interface for type safety
+interface MyRouterContext {
+  queryClient: QueryClient;
+  auth: {
+    isAuthenticated: boolean;
+    user: User | null;
+    token: string | null;
+  };
+}
+
+export const Route = createRootRouteWithContext<MyRouterContext>()({
   component: RootComponent,
 });
 
