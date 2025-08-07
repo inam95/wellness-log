@@ -33,8 +33,6 @@ export const Route = createFileRoute('/login')({
 function RouteComponent() {
   const { redirect } = Route.useSearch();
 
-  console.log('yex', redirect);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -84,6 +82,7 @@ function RouteComponent() {
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={e => field.handleChange(e.target.value)}
+                  className="text-foreground"
                 />
                 <FieldInfo field={field} />
               </div>

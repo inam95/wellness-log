@@ -77,6 +77,7 @@ function RouteComponent() {
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={e => field.handleChange(e.target.value)}
+                  className="text-foreground"
                 />
                 <FieldInfo field={field} />
               </div>
@@ -97,6 +98,7 @@ function RouteComponent() {
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={e => field.handleChange(e.target.value)}
+                  className="text-foreground"
                 />
                 <FieldInfo field={field} />
               </div>
