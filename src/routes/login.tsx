@@ -74,7 +74,7 @@ function RouteComponent() {
             children={field => (
               <div className="grid gap-2">
                 <Label htmlFor={field.name} className="text-foreground">
-                  Username
+                  Email
                 </Label>
                 <Input
                   id={field.name}
